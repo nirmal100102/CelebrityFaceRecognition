@@ -1,0 +1,123 @@
+<!-- app.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrity Classifier</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./dropzone.min.css">
+    <style>
+        .custom-circle-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light justify-content-center">
+        <a class="navbar-brand" href="#">Celebrity Classifier</a>
+    </nav>
+
+    <div class="container">
+        <!-- Always-visible Celebrity Cards Section -->
+        <div class="row" id="allCelebrityCards">
+            <div class="col card-wrapper" Celebrity="akshay">
+                <div class="card border-0">
+                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                        <img class="w-100 h-100" src="./images/akshay.jpg">
+                    </div>
+                    <div class="card-body text-center mt-4">
+                        <h4 class="text-uppercase card-title">Akshay Kumar</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col card-wrapper" Celebrity="kohli">
+                <div class="card border-0">
+                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                        <img class="w-100 h-100" src="./images/kohli.jpg">
+                    </div>
+                    <div class="card-body text-center mt-4">
+                        <h4 class="text-uppercase card-title">Virat Kohli</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col card-wrapper" Celebrity="messi">
+                <div class="card border-0">
+                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                        <img class="w-100 h-100" src="./images/messi.jpg">
+                    </div>
+                    <div class="card-body text-center mt-4">
+                        <h4 class="text-uppercase card-title">Lionel Messi</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col card-wrapper" Celebrity="nora">
+                <div class="card border-0">
+                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                        <img class="w-100 h-100" src="./images/nora.jpg">
+                    </div>
+                    <div class="card-body text-center mt-4">
+                        <h4 class="text-uppercase card-title">Nora Fatehi</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col card-wrapper" Celebrity="urvashi">
+                <div class="card border-0">
+                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                        <img class="w-100 h-100" src="./images/urvashi.jpg">
+                    </div>
+                    <div class="card-body text-center mt-4">
+                        <h4 class="text-uppercase card-title">Urvashi Rautela</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Classification Row -->
+        <div class="row align-items-start mt-4">
+            <!-- Dropzone -->
+            <div class="col-md-4">
+                <form action="/file-upload" class="dropzone" id="dropzone">
+                    <div class="dz-message needsclick">
+                        <img src="./images/upload.png" width="50vw" height="50vw"><br>
+                        <span class="note needsclick">Drop files here or click to upload</span>
+                    </div>
+                </form>
+                <div class="text-center mt-3">
+                    <button id="submitBtn" type="button" class="btn btn-success">Classify</button>
+                </div>
+            </div>
+
+            <!-- Prediction Result -->
+            <div class="col-md-4">
+                <div id="error" class="text-danger" style="display: none;">Can't classify image. Face not detected properly.</div>
+                <div id="resultHolder" class="text-center my-3"></div>
+                <!-- Predicted Celebrity Card Display Section -->
+                <div class="row justify-content-center" id="predictedCardContainer"></div>
+            </div>
+
+            <!-- Probability Table -->
+            <div class="col-md-4">
+                <div id="divClassTable">
+                    <table class="table">
+                        <tr><th>Player</th><th>Probability Score</th></tr>
+                        <tr><td>Akshay Kumar</td><td id="score_akshay"></td></tr>
+                        <tr><td>Virat Kohli</td><td id="score_kohli"></td></tr>
+                        <tr><td>Lionel Messi</td><td id="score_messi"></td></tr>
+                        <tr><td>Nora Fatehi</td><td id="score_nora"></td></tr>
+                        <tr><td>Urvashi Rautela</td><td id="score_urvashi"></td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="./dropzone.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
